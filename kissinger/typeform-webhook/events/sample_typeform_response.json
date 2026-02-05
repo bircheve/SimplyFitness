@@ -1,0 +1,544 @@
+{
+  "event_id": "01H3MV1515PKNFM8D5D3HRS7C3",
+  "event_type": "form_response",
+  "form_response": {
+    "form_id": "cmEwHxtl",
+    "token": "01H3MV1515PKNFM8D5D3HRS7C3",
+		"hidden": {
+			"user_id": "test-id"
+		},
+    "landed_at": "2023-06-23T19:17:24Z",
+    "submitted_at": "2023-06-23T19:17:24Z",
+    "definition": {
+      "id": "cmEwHxtl",
+      "title": "SimplyFit Onboarding Survey (Beta)",
+      "fields": [
+        {
+          "id": "4Eu8qVqiOce3",
+          "ref": "b633af34-30fc-4e21-8620-5046a8264423",
+          "type": "short_text",
+          "title": "Let's start with your first name!",
+          "properties": {}
+        },
+        {
+          "id": "3JbaYj57YKrY",
+          "ref": "b142c06d-0529-46c3-9b86-7650dbed0da4",
+          "type": "short_text",
+          "title": "What's your last name?",
+          "properties": {}
+        },
+        {
+          "id": "qYdKE722y4BP",
+          "ref": "216e06d7-f666-46f8-ac36-57db716a78f4",
+          "type": "email",
+          "title": "What's a good email address?",
+          "properties": {}
+        },
+        {
+          "id": "g6jVJpihouTh",
+          "ref": "9cf33598-230e-40fc-9235-ce2e005222c5",
+          "type": "date",
+          "title": "What's your birthday?",
+          "properties": {}
+        },
+        {
+          "id": "ZUIua11hXdF6",
+          "ref": "64f2cfd2-bf4f-41c7-9324-d7fe9f830d32",
+          "type": "phone_number",
+          "title": "How about your cell number? ",
+          "properties": {}
+        },
+        {
+          "id": "4JOJ1mtQOp1K",
+          "ref": "3649f221-d1b4-44c1-9492-338fb23b9588",
+          "type": "short_text",
+          "title": "What’s your height on a good day?",
+          "properties": {}
+        },
+        {
+          "id": "8Kaxukv6F8hE",
+          "ref": "9cf41227-fe60-405b-bdcb-4dec0697717f",
+          "type": "number",
+          "title": "What’s your current weight?",
+          "properties": {}
+        },
+        {
+          "id": "mUxAsbkVyajH",
+          "ref": "185e764a-2154-4523-bbdc-253d5d7d3ced",
+          "type": "multiple_choice",
+          "title": "How do you identify?",
+          "properties": {},
+          "choices": [
+            { "id": "Xff01Hrhy2yS", "label": "Male" },
+            { "id": "Dyv6zvG0A22J", "label": "Female" },
+            { "id": "HM2YmZGvrpqf", "label": "Other" }
+          ]
+        },
+        {
+          "id": "qo08lBubUSt2",
+          "ref": "f7e97594-0148-4aaf-bb24-a69b81b9a5e8",
+          "type": "multiple_choice",
+          "title": "Where do you usually work out?",
+          "properties": {},
+          "choices": [
+            { "id": "3hrWqLk56r6a", "label": "Gym" },
+            { "id": "bYgcnjDzwO7m", "label": "Home" },
+            { "id": "cKROqaiuH1so", "label": "Both" }
+          ]
+        },
+        {
+          "id": "HWrfYSMyqwYE",
+          "ref": "ee0f33be-1da7-4e9c-be83-bfe354961a69",
+          "type": "multiple_choice",
+          "title": "If you work out at home, what kind of equipment do you have?",
+          "properties": {},
+          "allow_multiple_selections": true,
+          "allow_other_choice": true,
+          "choices": [
+            { "id": "xMkqsyhG97eE", "label": "Treadmil" },
+            { "id": "OtRAxBvB4HRx", "label": "Dumbbells" },
+            { "id": "llbOFMgz2INp", "label": "Bench & Barbell" },
+            { "id": "VUFYCRNtbuXb", "label": "Yoga Mat," },
+            { "id": "2EdwzvpQalpf", "label": "Exercise Bike" },
+            { "id": "Grj7BPlpQD18", "label": "Resistent Bands" }
+          ]
+        },
+        {
+          "id": "Gdn83sBkLar1",
+          "ref": "20b5e0de-6ded-4a3b-920c-4be2b1f037ec",
+          "type": "multiple_choice",
+          "title": "How often do you exercise?",
+          "properties": {},
+          "allow_other_choice": true,
+          "choices": [
+            { "id": "APlsOghSsfQA", "label": "Once a week" },
+            { "id": "Sz1wCqkcIGLj", "label": "2-3 times a week" },
+            { "id": "RsjhRBarxRBB", "label": "4-5 times a week" }
+          ]
+        },
+        {
+          "id": "TGFdfQ3eOW1g",
+          "ref": "8dc01237-2411-474f-940b-3697774db99d",
+          "type": "multiple_choice",
+          "title": "How much time do typically or want to spend working out?",
+          "properties": {},
+          "allow_other_choice": true,
+          "choices": [
+            { "id": "enTJMOSjnStA", "label": "30 Minutes or Less" },
+            { "id": "GIW4iqVswOxh", "label": "30 to 60 Minutes" },
+            { "id": "UiMFE7WKkKu0", "label": "60 to 90 Minutes" }
+          ]
+        },
+        {
+          "id": "JPvrn2xxsc3m",
+          "ref": "75135c1c-8d7b-43fa-9fc0-c6f462fdcff0",
+          "type": "long_text",
+          "title": "What does your current weight training schedule look like?",
+          "properties": {}
+        },
+        {
+          "id": "DzdBbXtab9AS",
+          "ref": "d052e5aa-27fa-415e-b35f-78b61dcb7a90",
+          "type": "multiple_choice",
+          "title": "What days of the week do you like to workout/exercise?",
+          "properties": {},
+          "allow_multiple_selections": true,
+          "choices": [
+            { "id": "CiLMURrFsObL", "label": "Sunday" },
+            { "id": "ohyISqlYXG9X", "label": "Monday" },
+            { "id": "J7ZwRbn8zyQj", "label": "Tuesday" },
+            { "id": "yQ6E614p4ksT", "label": "Wednesday" },
+            { "id": "BD9AW11K2f0f", "label": "Thursday" },
+            { "id": "fKEIg3O39Wse", "label": "Friday" },
+            { "id": "rL8ib3AbgtCr", "label": "Saturday" }
+          ]
+        },
+        {
+          "id": "NzpfnYZGGoN0",
+          "ref": "1b9856cf-aa90-4dad-8946-f0d7a70740b7",
+          "type": "multiple_choice",
+          "title": "What are your preferences for cardio?",
+          "properties": {},
+          "allow_multiple_selections": true,
+          "allow_other_choice": true,
+          "choices": [
+            { "id": "W5NUbm74g0GI", "label": "Please No Cardio" },
+            { "id": "rYbnwyG0Wltz", "label": "Treadmil" },
+            { "id": "QVZ1cf5ocosC", "label": "Outdoor Running" },
+            { "id": "usCuvosgQHEJ", "label": "Cycling" },
+            { "id": "hKrQ03q5OuF1", "label": "Stair Master" },
+            { "id": "KDsgGkYy8ePc", "label": "Swimming" }
+          ]
+        },
+        {
+          "id": "P6E0LtiTxpRQ",
+          "ref": "0f7e48b4-cdf8-4c68-bb73-c1603121db98",
+          "type": "short_text",
+          "title": "Are there any exercises that you love to do?",
+          "properties": {}
+        },
+        {
+          "id": "27ssoAKjHnUW",
+          "ref": "63996525-7d03-40b4-90f0-d6c139d41ed3",
+          "type": "short_text",
+          "title": "Are there exercises you hate and want to avoid?",
+          "properties": {}
+        },
+        {
+          "id": "SqZZkwHLmPRB",
+          "ref": "25cd06aa-e26c-4db6-ae15-135b0ff71be4",
+          "type": "yes_no",
+          "title": "Do you wear any fitness devices?",
+          "properties": {}
+        },
+        {
+          "id": "jPwfVgLoc2dt",
+          "ref": "d66d61a6-769f-4d86-9c63-a72091effeeb",
+          "type": "multiple_choice",
+          "title": "On a scale of couch potato to Olympic athlete, how would you rate your current fitness level",
+          "properties": {},
+          "choices": [
+            { "id": "X4RZXIKD4u81", "label": "Couch Potato" },
+            { "id": "SQ0qeFxYpJa0", "label": "Beginner" },
+            { "id": "BxYBKWaJgjPf", "label": "Intermediate" },
+            { "id": "8TKEw9zuFf71", "label": "Advanced" },
+            { "id": "xkz9P1DwVLnE", "label": "Olympic Athlete" }
+          ]
+        },
+        {
+          "id": "wXWD6ytZR3ST",
+          "ref": "779c42f5-e3fb-4a4c-96ea-0e483647e8aa",
+          "type": "long_text",
+          "title": "Do you have any health conditions or past injuries we should know about?",
+          "properties": {}
+        },
+        {
+          "id": "2dlPGepECqY3",
+          "ref": "6731b2ab-4174-401d-80be-97383b093aba",
+          "type": "long_text",
+          "title": "Tell me about your fitness goals and dreams in detail, as if you were chatting with a friend.",
+          "properties": {}
+        },
+        {
+          "id": "sh45k9uA42He",
+          "ref": "29c85b53-1166-4f77-8c02-11d9a47b7ddf",
+          "type": "multiple_choice",
+          "title": "How's your work? More of a desk job, or are you always on your feet?",
+          "properties": {},
+          "choices": [
+            { "id": "a9iP27HbBDkv", "label": "Sedentary (desk job)" },
+            { "id": "2GVty9luWJIg", "label": "Lightly active (walking a lot)" },
+            { "id": "QRmEbL7jXIcu", "label": "Active (physical job)" },
+            { "id": "yUxLCiBJAtRu", "label": "Very active (heavy labor)" }
+          ]
+        },
+        {
+          "id": "zdyijssuYSla",
+          "ref": "fcbbc65b-8f17-44c5-a2e0-fa48ddf40e4a",
+          "type": "multiple_choice",
+          "title": "Let's talk food. Are you a balanced-diet person, a treat-yourself person, or somewhere in between?",
+          "properties": {},
+          "choices": [
+            { "id": "I9uvHT1TZEAg", "label": "Healthy and balanced" },
+            {
+              "id": "yefEzLi8mPMD",
+              "label": "Mostly healthy with some treats"
+            },
+            { "id": "g8R4n1tARrff", "label": "Unhealthy" },
+            { "id": "Xa6Mo1fmp9FF", "label": "I'm not sure" }
+          ]
+        },
+        {
+          "id": "XS459M8gA3MR",
+          "ref": "8b6603f8-e218-497d-8046-d248249d2b2a",
+          "type": "multiple_choice",
+          "title": "How often do you take time to check in on your mental wellbeing?",
+          "properties": {},
+          "choices": [
+            { "id": "S0O9Oa1ZztEG", "label": "Daily" },
+            { "id": "WGlPfeFD66lQ", "label": "Weekly" },
+            { "id": "tgHeiCTEeY7d", "label": "Monthly" },
+            { "id": "t28gZn59sFsD", "label": "Rarely" },
+            { "id": "7GlUvi8EJfvf", "label": "Never" }
+          ]
+        },
+        {
+          "id": "ViXe6gcPoJd9",
+          "ref": "031899ee-828d-4c1f-8560-c4adf9839f31",
+          "type": "multiple_choice",
+          "title": "How would you like your AI Fitness Mentor to motivate and guide you?",
+          "properties": {},
+          "choices": [
+            { "id": "z362C6ti5q6R", "label": "Motivator" },
+            { "id": "49MkEScRu1eX", "label": "Drill Sergeant" },
+            { "id": "jmSOKfKi9run", "label": "Overly Positive Cheerleader" },
+            { "id": "yAiTMTznuSgt", "label": "Witty Comedian" },
+            { "id": "iyU2AX5TKeDd", "label": "Educator and Informant" }
+          ]
+        },
+        {
+          "id": "WRcWdL1k4QNi",
+          "ref": "a2b90135-aee8-46c4-a12d-80dbcddf9f52",
+          "type": "long_text",
+          "title": "Last question, is there anything else you want you want your AI fitness mentor to take into consideration when generating your plan?",
+          "properties": {}
+        }
+      ],
+      "endings": [
+        {
+          "id": "DefaultTyScreen",
+          "ref": "default_tys",
+          "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, & beautiful",
+          "type": "thankyou_screen",
+          "properties": {
+            "button_text": "Create a *typeform*",
+            "show_button": true,
+            "share_icons": false,
+            "button_mode": "default_redirect"
+          },
+          "attachment": {
+            "type": "image",
+            "href": "https://images.typeform.com/images/2dpnUBBkz2VN"
+          }
+        }
+      ]
+    },
+    "answers": [
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "4Eu8qVqiOce3",
+          "type": "short_text",
+          "ref": "b633af34-30fc-4e21-8620-5046a8264423"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "3JbaYj57YKrY",
+          "type": "short_text",
+          "ref": "b142c06d-0529-46c3-9b86-7650dbed0da4"
+        }
+      },
+      {
+        "type": "email",
+        "email": "an_account@example.com",
+        "field": {
+          "id": "qYdKE722y4BP",
+          "type": "email",
+          "ref": "216e06d7-f666-46f8-ac36-57db716a78f4"
+        }
+      },
+      {
+        "type": "date",
+        "date": "2017-02-06",
+        "field": {
+          "id": "g6jVJpihouTh",
+          "type": "date",
+          "ref": "9cf33598-230e-40fc-9235-ce2e005222c5"
+        }
+      },
+      {
+        "type": "phone_number",
+        "phone_number": "+34123456789",
+        "field": {
+          "id": "ZUIua11hXdF6",
+          "type": "phone_number",
+          "ref": "64f2cfd2-bf4f-41c7-9324-d7fe9f830d32"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "4JOJ1mtQOp1K",
+          "type": "short_text",
+          "ref": "3649f221-d1b4-44c1-9492-338fb23b9588"
+        }
+      },
+      {
+        "type": "number",
+        "number": 42,
+        "field": {
+          "id": "8Kaxukv6F8hE",
+          "type": "number",
+          "ref": "9cf41227-fe60-405b-bdcb-4dec0697717f"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "mUxAsbkVyajH",
+          "type": "multiple_choice",
+          "ref": "185e764a-2154-4523-bbdc-253d5d7d3ced"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "qo08lBubUSt2",
+          "type": "multiple_choice",
+          "ref": "f7e97594-0148-4aaf-bb24-a69b81b9a5e8"
+        }
+      },
+      {
+        "type": "choices",
+        "choices": { "labels": ["Barcelona"] },
+        "field": {
+          "id": "HWrfYSMyqwYE",
+          "type": "multiple_choice",
+          "ref": "ee0f33be-1da7-4e9c-be83-bfe354961a69"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "Gdn83sBkLar1",
+          "type": "multiple_choice",
+          "ref": "20b5e0de-6ded-4a3b-920c-4be2b1f037ec"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "TGFdfQ3eOW1g",
+          "type": "multiple_choice",
+          "ref": "8dc01237-2411-474f-940b-3697774db99d"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "JPvrn2xxsc3m",
+          "type": "long_text",
+          "ref": "75135c1c-8d7b-43fa-9fc0-c6f462fdcff0"
+        }
+      },
+      {
+        "type": "choices",
+        "choices": { "labels": ["Barcelona"] },
+        "field": {
+          "id": "DzdBbXtab9AS",
+          "type": "multiple_choice",
+          "ref": "d052e5aa-27fa-415e-b35f-78b61dcb7a90"
+        }
+      },
+      {
+        "type": "choices",
+        "choices": { "labels": ["Barcelona"] },
+        "field": {
+          "id": "NzpfnYZGGoN0",
+          "type": "multiple_choice",
+          "ref": "1b9856cf-aa90-4dad-8946-f0d7a70740b7"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "P6E0LtiTxpRQ",
+          "type": "short_text",
+          "ref": "0f7e48b4-cdf8-4c68-bb73-c1603121db98"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "27ssoAKjHnUW",
+          "type": "short_text",
+          "ref": "63996525-7d03-40b4-90f0-d6c139d41ed3"
+        }
+      },
+      {
+        "type": "boolean",
+        "boolean": true,
+        "field": {
+          "id": "SqZZkwHLmPRB",
+          "type": "yes_no",
+          "ref": "25cd06aa-e26c-4db6-ae15-135b0ff71be4"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "jPwfVgLoc2dt",
+          "type": "multiple_choice",
+          "ref": "d66d61a6-769f-4d86-9c63-a72091effeeb"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "wXWD6ytZR3ST",
+          "type": "long_text",
+          "ref": "779c42f5-e3fb-4a4c-96ea-0e483647e8aa"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "2dlPGepECqY3",
+          "type": "long_text",
+          "ref": "6731b2ab-4174-401d-80be-97383b093aba"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "sh45k9uA42He",
+          "type": "multiple_choice",
+          "ref": "29c85b53-1166-4f77-8c02-11d9a47b7ddf"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "zdyijssuYSla",
+          "type": "multiple_choice",
+          "ref": "fcbbc65b-8f17-44c5-a2e0-fa48ddf40e4a"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "XS459M8gA3MR",
+          "type": "multiple_choice",
+          "ref": "8b6603f8-e218-497d-8046-d248249d2b2a"
+        }
+      },
+      {
+        "type": "choice",
+        "choice": { "label": "Barcelona" },
+        "field": {
+          "id": "ViXe6gcPoJd9",
+          "type": "multiple_choice",
+          "ref": "031899ee-828d-4c1f-8560-c4adf9839f31"
+        }
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor",
+        "field": {
+          "id": "WRcWdL1k4QNi",
+          "type": "long_text",
+          "ref": "a2b90135-aee8-46c4-a12d-80dbcddf9f52"
+        }
+      }
+    ],
+    "ending": { "id": "DefaultTyScreen", "ref": "default_tys" }
+  }
+}

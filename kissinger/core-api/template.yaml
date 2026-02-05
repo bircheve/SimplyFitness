@@ -1,0 +1,514 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sf-core-api - API for simplyfit core
+
+  [API Gateway | Lambda | SQS]
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+  CognitoUserPoolId:
+    Type: String
+    Description: Cognito User Pool Id
+  OpenAiModel:
+    Type: String
+    Default: gpt-4
+    AllowedValues:
+      - gpt-3.5-turbo-0613
+      - gpt-4
+      - gpt-4-0613
+  StoryTableName:
+    Type: String
+    Description: Story Table Name
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 512
+    Tracing: Active
+    Environment:
+      Variables:
+        POWERTOOLS_SERVICE_NAME: !Sub sf-core-api-${Environment}
+        POWERTOOLS_METRICS_NAMESPACE: !Sub sf-app-${Environment}
+        STORY_TABLE: !Ref StoryTableName
+        GENERATOR_QUEUE_URL: !Ref WorkoutGeneratorQueue
+        LOG_LEVEL: DEBUG
+  Api:
+    TracingEnabled: true
+
+Resources:
+  ########################## API Gateway #######################################
+  InternalApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Environment
+      Cors:
+        AllowMethods: "'OPTIONS,GET,PUT,POST,DELETE'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
+      Auth:
+        DefaultAuthorizer: CognitoUserPool
+        Authorizers:
+          CognitoUserPool:
+            UserPoolArn: !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${CognitoUserPoolId}
+      AccessLogSetting:
+        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
+        Format: '{"requestTime":"$context.requestTime","requestId":"$context.requestId","httpMethod":"$context.httpMethod","path":"$context.path","resourcePath":"$context.resourcePath","status":$context.status,"responseLatency":$context.responseLatency}'
+  ApiAccessLogGroup:
+    Type: AWS::Logs::LogGroup
+
+  ########################## Lambda - API Handlers #############################
+  TodaysWorkoutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: todaysWorkout.handler
+      Runtime: nodejs16.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetTodayWorkouts:
+          Type: Api
+          Properties:
+            Path: /workouts/today
+            Method: get
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/todaysWorkout.ts
+
+  CompleteWorkoutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: completeWorkout.handler
+      Runtime: nodejs16.x
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt WorkoutGeneratorQueue.QueueName
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetWorkoutById:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}
+            Method: put
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/completeWorkout.ts
+
+  RemixWorkoutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: remixWorkout.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt WorkoutGeneratorQueue.QueueName
+      Events:
+        PostWorkoutRemix:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}/remix
+            Method: post
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/remixWorkout.ts
+
+  GetSharedWorkoutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: getSharedWorkout.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+        - Statement:
+            - Sid: "ReadUserAttributes"
+              Effect: "Allow"
+              Action:
+                - "cognito-idp:AdminGetUser"
+              Resource:
+                - !Sub "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${CognitoUserPoolId}"
+      Environment:
+        Variables:
+          COGNITO_USER_POOL_ID: !Ref CognitoUserPoolId
+      Events:
+        GetSharedWorkout:
+          Type: Api
+          Properties:
+            Path: /shared/{id}
+            Method: get
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/getSharedWorkout.ts
+
+  UseSharedWorkoutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: useSharedWorkout.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetSharedWorkout:
+          Type: Api
+          Properties:
+            Path: /shared/{id}
+            Method: post
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/useSharedWorkout.ts
+
+  GetWorkoutHistoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: getWorkoutHistory.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetWorkoutHistory:
+          Type: Api
+          Properties:
+            Path: /workouts
+            Method: get
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/getWorkoutHistory.ts
+  
+  GetAchievementsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: getAchievements.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetWorkoutHistory:
+          Type: Api
+          Properties:
+            Path: /achievements
+            Method: get
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/getAchievements.ts
+
+  AddExerciseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: addExercise.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Environment:
+        Variables:
+          OPEN_AI_API_KEY: "{{resolve:ssm:/simplyfit/env/open-ai-api-key:1}}"
+      Events:
+        GetWorkoutHistory:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}/exercises
+            Method: post
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/addExercise.ts
+
+  RemixExerciseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: remixExercise.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Environment:
+        Variables:
+          OPEN_AI_API_KEY: "{{resolve:ssm:/simplyfit/env/open-ai-api-key:1}}"
+      Events:
+        GetWorkoutHistory:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}/exercises/{exerciseId}/remix
+            Method: post
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/remixExercise.ts
+
+  EditExerciseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: editExercise.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        EditExerciseById:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}/exercises/{exerciseId}
+            Method: put
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/editExercise.ts
+
+  RemoveExerciseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: removeExercise.handler
+      Runtime: nodejs16.x
+      Timeout: 120
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+      Events:
+        GetWorkoutHistory:
+          Type: Api
+          Properties:
+            Path: /workouts/{id}/exercises/{exerciseId}
+            Method: delete
+            RestApiId:
+              Ref: InternalApi
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - workout-handlers/removeExercise.ts
+
+  ######################### SQS ################################################
+  WorkoutGeneratorQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub sf-${Environment}-workout-generator
+      VisibilityTimeout: 300
+      MessageRetentionPeriod: 86400
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt WorkoutGeneratorDLQ.Arn
+        maxReceiveCount: 5
+      Tags:
+        - Key: env
+          Value: !Ref Environment
+        - Key: app
+          Value: simplyfit
+        - Key: managedBy
+          Value: sam-cli
+
+  WorkoutGeneratorDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub sf-${Environment}-workout-generator-dlq
+      VisibilityTimeout: 60
+      MessageRetentionPeriod: 86400
+      Tags:
+        - Key: env
+          Value: !Ref Environment
+        - Key: app
+          Value: simplyfit
+        - Key: managedBy
+          Value: sam-cli
+
+  WorkoutFormatterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub sf-${Environment}-workout-formatter
+      VisibilityTimeout: 300
+      MessageRetentionPeriod: 86400
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt WorkoutFormatterDLQ.Arn
+        maxReceiveCount: 5
+      Tags:
+        - Key: env
+          Value: !Ref Environment
+        - Key: app
+          Value: simplyfit
+        - Key: managedBy
+          Value: sam-cli
+
+  WorkoutFormatterDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub sf-${Environment}-workout-formatter-dlq
+      VisibilityTimeout: 60
+      MessageRetentionPeriod: 86400
+      Tags:
+        - Key: env
+          Value: !Ref Environment
+        - Key: app
+          Value: simplyfit
+        - Key: managedBy
+          Value: sam-cli
+
+  ######################### Lambda - SQS Handlers ##############################
+  GenerateWorkoutConsumerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: generateWorkout.handler
+      Runtime: nodejs16.x
+      Timeout: 300
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+        - SQSPollerPolicy:
+            QueueName: !GetAtt WorkoutGeneratorQueue.QueueName
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt WorkoutFormatterQueue.QueueName
+      Environment:
+        Variables:
+          OPEN_AI_API_KEY: "{{resolve:ssm:/simplyfit/env/open-ai-api-key:1}}"
+          OPEN_AI_MODEL: !Ref OpenAiModel
+          FORMATTER_QUEUE_URL: !Ref WorkoutFormatterQueue
+          POWERTOOLS_SERVICE_NAME: 'generate-workout-consumer'
+          POWERTOOLS_METRICS_NAMESPACE: !Sub sf-app-${Environment}
+      Events:
+        GenerateWorkoutEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt WorkoutGeneratorQueue.Arn
+            BatchSize: 1
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - consumers/generateWorkout.ts
+
+  FormatWorkoutConsumerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./core-ts/
+      Handler: formatWorkout.handler
+      Runtime: nodejs16.x
+      Timeout: 300
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+        - SQSPollerPolicy:
+            QueueName: !GetAtt WorkoutFormatterQueue.QueueName
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt WorkoutFormatterQueue.QueueName
+      Environment:
+        Variables:
+          FORMATTER_QUEUE_URL: !Ref WorkoutFormatterQueue
+          OPEN_AI_API_KEY: "{{resolve:ssm:/simplyfit/env/open-ai-api-key:1}}"
+          OPEN_AI_MODEL: !Ref OpenAiModel
+          POWERTOOLS_SERVICE_NAME: 'format-workout-consumer'
+          POWERTOOLS_METRICS_NAMESPACE: !Sub sf-app-${Environment}
+          SLACK_WEBHOOK_URL: "{{resolve:ssm:/simplyfit/prod/env/slack-webhook-url:1}}"
+      Events:
+        FormatWorkoutEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt WorkoutFormatterQueue.Arn
+            BatchSize: 1
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints:
+          - consumers/formatWorkout.ts
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL for stage"
+    Value: !Sub "https://${InternalApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
+  WorkoutGeneratorQueue:
+    Description: "Workout Generator Queue URL"
+    Value: !Ref WorkoutGeneratorQueue
+  WorkoutGeneratorQueueName:
+    Description: "Workout Generator Queue Name"
+    Value: !GetAtt WorkoutGeneratorQueue.QueueName

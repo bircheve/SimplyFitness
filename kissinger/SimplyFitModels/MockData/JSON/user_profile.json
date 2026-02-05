@@ -1,0 +1,11 @@
+{
+  "userId": "user-123-456-789",
+  "email": "john.doe@example.com",
+  "given_name": "John",
+  "family_name": "Doe",
+  "birthdate": "1995-06-15T10:30:00Z",
+  "picture": null,
+  "typeform_form_id": "amRNm1Hx",
+  "createdAt": "2024-08-17T10:00:00Z",
+  "updatedAt": "2024-09-15T14:30:00Z"
+}

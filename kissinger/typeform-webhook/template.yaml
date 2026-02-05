@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sf-typeform-webhook - webhook handler for typeform responses
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+  StoryTableName:
+    Type: String
+    Description: Story Table Name
+  CognitoUserPoolId:
+    Type: String
+    Description: Cognito User Pool Id
+  TypeformFormId:
+    Type: String
+    Description: Typeform form id
+  WorkoutGeneratorQueueUrl:
+    Type: String
+    Description: Workout Generator Queue URL
+  WorkoutGeneratorQueueName:
+    Type: String
+    Description: Workout Generator Queue Name
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 128
+    Tags:
+      env: !Ref Environment
+      app: simplyfit
+      managedBy: sam-cli
+
+Resources:
+  WebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub sf-${Environment}-typeform-webhook
+      CodeUri: webhook-handler/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Environment:
+        Variables:
+          POWERTOOLS_SERVICE_NAME: !Sub sf-${Environment}-typeform-webhook
+          POWERTOOLS_METRICS_NAMESPACE: !Sub sf-${Environment}-typeform-webhook
+          FORM_ID: !Ref TypeformFormId
+          QUEUE_URL: !Ref WorkoutGeneratorQueueUrl
+          STORY_TABLE: !Ref StoryTableName
+          USER_POOL_ID: !Ref CognitoUserPoolId
+      Events:
+        WebhookApi:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: POST
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !Ref WorkoutGeneratorQueueName
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StoryTableName
+        - SSMParameterReadPolicy:
+            ParameterName: slackWebhookUrl
+        - SSMParameterReadPolicy:
+            ParameterName: typeformSecret
+        - SSMParameterReadPolicy:
+            ParameterName: typeformApiKey
+        - Statement:
+            - Sid: "UpdateUserAttributes"
+              Effect: "Allow"
+              Action:
+                - "cognito-idp:AdminGetUser"
+                - "cognito-idp:AdminUpdateUserAttributes"
+              Resource:
+                - !Sub "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${CognitoUserPoolId}"
+
+Outputs:
+  WebhookApiUrl:
+    Description: (Implicit) API Gateway endpoint URL for Prod stage for Webhook function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/webhook/"
+  WebhookFunction:
+    Description: Webhook Lambda Function ARN
+    Value: !GetAtt WebhookFunction.Arn

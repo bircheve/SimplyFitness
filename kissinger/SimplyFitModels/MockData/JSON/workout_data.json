@@ -1,0 +1,478 @@
+[
+  {
+    "id": "workout-today-001",
+    "userId": "user-123-456-789",
+    "entity": "workout",
+    "chatRole": "assistant",
+    "muscle_groups": ["chest", "back", "shoulders"],
+    "work": [
+      {
+        "id": "section-warmup-001",
+        "type": "warmup",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "warmup-1",
+              "name": "Arm Circles",
+              "instructions": "Large circular motions with arms to warm up shoulders.",
+              "equipment": "none",
+              "muscleGroups": ["shoulders"],
+              "duration": 60,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          },
+          {
+            "type": "time_based",
+            "data": {
+              "id": "warmup-2",
+              "name": "Light Jogging in Place",
+              "instructions": "Gentle jogging motion to warm up the body.",
+              "equipment": "none",
+              "muscleGroups": ["cardio"],
+              "duration": 120,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      },
+      {
+        "id": "section-main-001",
+        "type": "main",
+        "exercises": [
+          {
+            "type": "strength",
+            "data": {
+              "id": "main-1",
+              "name": "Dumbbell Bench Press",
+              "instructions": "Lie on bench, press dumbbells up and together, lower with control.",
+              "equipment": "dumbbells",
+              "muscleGroups": ["chest", "triceps", "shoulders"],
+              "sets": [
+                {
+                  "id": "set-1",
+                  "reps": 12,
+                  "actualReps": null,
+                  "weight": 25.0,
+                  "isCompleted": false,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-2",
+                  "reps": 10,
+                  "actualReps": null,
+                  "weight": 27.5,
+                  "isCompleted": false,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-3",
+                  "reps": 8,
+                  "actualReps": null,
+                  "weight": 30.0,
+                  "isCompleted": false,
+                  "restTime": 90
+                }
+              ],
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": "Focus on controlled movement, avoid locking elbows"
+            }
+          },
+          {
+            "type": "strength",
+            "data": {
+              "id": "main-2",
+              "name": "Pull-ups",
+              "instructions": "Hang from bar, pull body up until chin clears bar, lower with control.",
+              "equipment": "pullup_bar",
+              "muscleGroups": ["back", "biceps"],
+              "sets": [
+                {
+                  "id": "set-4",
+                  "reps": 8,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 90
+                },
+                {
+                  "id": "set-5",
+                  "reps": 6,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 90
+                },
+                {
+                  "id": "set-6",
+                  "reps": 5,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 120
+                }
+              ],
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": "Use assistance band if needed"
+            }
+          },
+          {
+            "type": "strength",
+            "data": {
+              "id": "main-3",
+              "name": "Dumbbell Rows",
+              "instructions": "Bend forward, pull dumbbells to sides, squeeze shoulder blades.",
+              "equipment": "dumbbells",
+              "muscleGroups": ["back", "biceps"],
+              "sets": [
+                {
+                  "id": "set-7",
+                  "reps": 12,
+                  "actualReps": null,
+                  "weight": 20.0,
+                  "isCompleted": false,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-8",
+                  "reps": 12,
+                  "actualReps": null,
+                  "weight": 22.5,
+                  "isCompleted": false,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-9",
+                  "reps": 10,
+                  "actualReps": null,
+                  "weight": 25.0,
+                  "isCompleted": false,
+                  "restTime": 90
+                }
+              ],
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      },
+      {
+        "id": "section-cardio-001",
+        "type": "cardio",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "cardio-1",
+              "name": "Burpees",
+              "instructions": "Full body movement: squat, jump back, push-up, jump forward, jump up.",
+              "equipment": "none",
+              "muscleGroups": ["full_body", "cardio"],
+              "duration": 180,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": "Modify by stepping back instead of jumping if needed"
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      },
+      {
+        "id": "section-cooldown-001",
+        "type": "cooldown",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "cooldown-1",
+              "name": "Chest Stretch",
+              "instructions": "Gently stretch chest muscles against a wall.",
+              "equipment": "none",
+              "muscleGroups": [],
+              "duration": 45,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          },
+          {
+            "type": "time_based",
+            "data": {
+              "id": "cooldown-2",
+              "name": "Shoulder Stretch",
+              "instructions": "Cross arm across body and gently pull with other arm.",
+              "equipment": "none",
+              "muscleGroups": [],
+              "duration": 30,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": "Hold for 30 seconds each arm"
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      }
+    ],
+    "status": "incomplete",
+    "gptStatus": "complete",
+    "scheduledFor": "2024-09-16T09:00:00Z",
+    "createdAt": "2024-09-15T20:00:00Z",
+    "updatedAt": null,
+    "completedAt": null,
+    "feedback": null,
+    "rating": null
+  },
+  {
+    "id": "workout-yesterday-001",
+    "userId": "user-123-456-789",
+    "entity": "workout",
+    "chatRole": "assistant",
+    "muscle_groups": ["legs", "glutes"],
+    "work": [
+      {
+        "id": "section-warmup-002",
+        "type": "warmup",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "warmup-legs-1",
+              "name": "Dynamic Leg Swings",
+              "instructions": "Swing legs forward and back to warm up hips.",
+              "equipment": "none",
+              "muscleGroups": ["legs"],
+              "duration": 120,
+              "actualDuration": 120,
+              "isCompleted": true,
+              "completionStatus": "complete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": true,
+        "completionStatus": "complete"
+      },
+      {
+        "id": "section-main-002",
+        "type": "main",
+        "exercises": [
+          {
+            "type": "strength",
+            "data": {
+              "id": "main-legs-1",
+              "name": "Bodyweight Squats",
+              "instructions": "Lower into squat position, return to standing.",
+              "equipment": "bodyweight",
+              "muscleGroups": ["quadriceps", "glutes"],
+              "sets": [
+                {
+                  "id": "set-legs-1",
+                  "reps": 15,
+                  "actualReps": 15,
+                  "weight": null,
+                  "isCompleted": true,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-legs-2",
+                  "reps": 12,
+                  "actualReps": 13,
+                  "weight": null,
+                  "isCompleted": true,
+                  "restTime": 60
+                },
+                {
+                  "id": "set-legs-3",
+                  "reps": 10,
+                  "actualReps": 11,
+                  "weight": null,
+                  "isCompleted": true,
+                  "restTime": 90
+                }
+              ],
+              "isCompleted": true,
+              "completionStatus": "complete",
+              "notes": "Felt strong today, added extra reps"
+            }
+          }
+        ],
+        "isCompleted": true,
+        "completionStatus": "complete"
+      },
+      {
+        "id": "section-cooldown-002",
+        "type": "cooldown",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "cooldown-legs-1",
+              "name": "Quad Stretch",
+              "instructions": "Hold ankle behind you, stretch quadriceps.",
+              "equipment": "none",
+              "muscleGroups": [],
+              "duration": 30,
+              "actualDuration": 35,
+              "isCompleted": true,
+              "completionStatus": "complete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": true,
+        "completionStatus": "complete"
+      }
+    ],
+    "status": "complete",
+    "gptStatus": "complete",
+    "scheduledFor": "2024-09-15T09:00:00Z",
+    "createdAt": "2024-09-14T20:00:00Z",
+    "updatedAt": "2024-09-15T10:30:00Z",
+    "completedAt": "2024-09-15T10:30:00Z",
+    "feedback": "Legs are sore but in a good way! Felt great to get back into squats.",
+    "rating": 5
+  },
+  {
+    "id": "workout-tomorrow-001",
+    "userId": "user-123-456-789",
+    "entity": "workout",
+    "chatRole": "assistant",
+    "muscle_groups": ["core", "abs"],
+    "work": [
+      {
+        "id": "section-warmup-003",
+        "type": "warmup",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "warmup-core-1",
+              "name": "Cat-Cow Stretch",
+              "instructions": "Alternate between arching and rounding your back.",
+              "equipment": "mat",
+              "muscleGroups": ["core"],
+              "duration": 60,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      },
+      {
+        "id": "section-main-003",
+        "type": "main",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "main-core-1",
+              "name": "Plank",
+              "instructions": "Hold straight body position, engage core.",
+              "equipment": "mat",
+              "muscleGroups": ["core", "abs"],
+              "duration": 60,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          },
+          {
+            "type": "strength",
+            "data": {
+              "id": "main-core-2",
+              "name": "Russian Twists",
+              "instructions": "Rotate torso side to side while seated.",
+              "equipment": "bodyweight",
+              "muscleGroups": ["obliques", "core"],
+              "sets": [
+                {
+                  "id": "set-core-1",
+                  "reps": 20,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 45
+                },
+                {
+                  "id": "set-core-2",
+                  "reps": 20,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 45
+                },
+                {
+                  "id": "set-core-3",
+                  "reps": 15,
+                  "actualReps": null,
+                  "weight": null,
+                  "isCompleted": false,
+                  "restTime": 60
+                }
+              ],
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": "Count each side as one rep"
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      },
+      {
+        "id": "section-cooldown-003",
+        "type": "cooldown",
+        "exercises": [
+          {
+            "type": "time_based",
+            "data": {
+              "id": "cooldown-core-1",
+              "name": "Child's Pose",
+              "instructions": "Kneel back onto heels, stretch arms forward.",
+              "equipment": "mat",
+              "muscleGroups": [],
+              "duration": 90,
+              "actualDuration": null,
+              "isCompleted": false,
+              "completionStatus": "incomplete",
+              "notes": null
+            }
+          }
+        ],
+        "isCompleted": false,
+        "completionStatus": "incomplete"
+      }
+    ],
+    "status": "incomplete",
+    "gptStatus": "complete",
+    "scheduledFor": "2024-09-17T09:00:00Z",
+    "createdAt": "2024-09-15T22:00:00Z",
+    "updatedAt": null,
+    "completedAt": null,
+    "feedback": null,
+    "rating": null
+  }
+]

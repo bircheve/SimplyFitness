@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sf-app
+  Root template for simplyfit
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+  OpenAiModel:
+    Type: String
+    Default: gpt-3.5-turbo-0613
+    AllowedValues:
+      - gpt-3.5-turbo-0613
+      - gpt-4
+      - gpt-4-0613
+  TypeformFormId:
+    Type: String
+    Description: Typeform form id
+  CognitoUserPoolId:
+    Type: String
+    Description: Cognito User Pool Id
+
+Resources:
+  #################### DB ####################
+  Database:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: db/template.yaml
+      Parameters:
+        Environment: !Ref Environment
+
+  ################### Webhook ####################
+  WebhookApi:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: typeform-webhook/template.yaml
+      Parameters:
+        Environment: !Ref Environment
+        CognitoUserPoolId: !Ref CognitoUserPoolId
+        StoryTableName: !GetAtt Database.Outputs.StoryTableName
+        TypeformFormId: !Ref TypeformFormId
+        WorkoutGeneratorQueueName: !GetAtt CoreApi.Outputs.WorkoutGeneratorQueueName
+        WorkoutGeneratorQueueUrl: !GetAtt CoreApi.Outputs.WorkoutGeneratorQueue
+
+
+  ################### Core API ####################
+  CoreApi:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: core-api/template.yaml
+      Parameters:
+        Environment: !Ref Environment
+        CognitoUserPoolId: !Ref CognitoUserPoolId
+        OpenAiModel: !Ref OpenAiModel
+        StoryTableName: !GetAtt Database.Outputs.StoryTableName
+
+Outputs:
+  StoryTable:
+    Description: Database table for storing stories
+    Value: !GetAtt Database.Outputs.StoryTableName
+  WebhookApiUrl:
+    Description: API Gateway endpoint URL for Webhook function
+    Value: !GetAtt WebhookApi.Outputs.WebhookApiUrl
+  CoreApiUrl:
+    Description: API Gateway endpoint URL for for Core API
+    Value: !GetAtt CoreApi.Outputs.ApiUrl
+

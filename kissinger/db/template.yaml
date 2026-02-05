@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sf-storage - Resources for simplyfit data storage
+
+  [DynamoDB | S3]
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+
+Resources:
+  #################### DB ####################
+  StoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub sf-Story-${Environment}
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+        - AttributeName: GSI1PK
+          AttributeType: S
+        - AttributeName: GSI1SK
+          AttributeType: S
+        - AttributeName: GSI2PK
+          AttributeType: S
+        - AttributeName: GSI2SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: GSI1
+          KeySchema:
+            - AttributeName: GSI1PK
+              KeyType: HASH
+            - AttributeName: GSI1SK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: GSI2
+          KeySchema:
+            - AttributeName: GSI2PK
+              KeyType: HASH
+            - AttributeName: GSI2SK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      BillingMode: PAY_PER_REQUEST
+      Tags:
+        - Key: env
+          Value: !Ref Environment
+        - Key: app
+          Value: !Ref Environment
+        - Key: managedBy
+          Value: sam-cli
+    # UpdateReplacePolicy: Retain
+    # DeletionPolicy: Retain
+
+  ################### S3 ####################
+  # TBD
+  
+Outputs:
+  StoryTableName:
+    Description: DynamoDB table for user Stories
+    Value: !Ref StoryTable

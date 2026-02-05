@@ -1,0 +1,332 @@
+[
+  {
+    "type": "strength",
+    "data": {
+      "id": "exercise-db-bench-press",
+      "name": "Dumbbell Bench Press",
+      "instructions": "Lie on bench, press dumbbells up and together, lower with control.",
+      "equipment": "dumbbells",
+      "muscleGroups": ["chest", "triceps", "shoulders"],
+      "sets": [
+        {
+          "id": "set-1",
+          "reps": 12,
+          "actualReps": null,
+          "weight": 25.0,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-2",
+          "reps": 10,
+          "actualReps": null,
+          "weight": 27.5,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-3",
+          "reps": 8,
+          "actualReps": null,
+          "weight": 30.0,
+          "isCompleted": false,
+          "restTime": 90
+        }
+      ],
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "strength",
+    "data": {
+      "id": "exercise-pull-ups",
+      "name": "Pull-ups",
+      "instructions": "Hang from bar, pull body up until chin clears bar, lower with control.",
+      "equipment": "pullup_bar",
+      "muscleGroups": ["back", "biceps"],
+      "sets": [
+        {
+          "id": "set-4",
+          "reps": 8,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 90
+        },
+        {
+          "id": "set-5",
+          "reps": 6,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 90
+        },
+        {
+          "id": "set-6",
+          "reps": 5,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 120
+        }
+      ],
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "strength",
+    "data": {
+      "id": "exercise-db-rows",
+      "name": "Dumbbell Rows",
+      "instructions": "Bend forward, pull dumbbells to sides, squeeze shoulder blades.",
+      "equipment": "dumbbells",
+      "muscleGroups": ["back", "biceps"],
+      "sets": [
+        {
+          "id": "set-7",
+          "reps": 12,
+          "actualReps": null,
+          "weight": 20.0,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-8",
+          "reps": 12,
+          "actualReps": null,
+          "weight": 22.5,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-9",
+          "reps": 10,
+          "actualReps": null,
+          "weight": 25.0,
+          "isCompleted": false,
+          "restTime": 90
+        }
+      ],
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "strength",
+    "data": {
+      "id": "exercise-push-ups",
+      "name": "Push-ups",
+      "instructions": "Lower chest to ground, push back up to starting position.",
+      "equipment": "bodyweight",
+      "muscleGroups": ["chest", "triceps", "shoulders"],
+      "sets": [
+        {
+          "id": "set-10",
+          "reps": 15,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-11",
+          "reps": 12,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-12",
+          "reps": 10,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 90
+        }
+      ],
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "strength",
+    "data": {
+      "id": "exercise-squats",
+      "name": "Bodyweight Squats",
+      "instructions": "Lower into squat position, return to standing.",
+      "equipment": "bodyweight",
+      "muscleGroups": ["quadriceps", "glutes"],
+      "sets": [
+        {
+          "id": "set-13",
+          "reps": 20,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-14",
+          "reps": 18,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 60
+        },
+        {
+          "id": "set-15",
+          "reps": 15,
+          "actualReps": null,
+          "weight": null,
+          "isCompleted": false,
+          "restTime": 90
+        }
+      ],
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-plank",
+      "name": "Plank",
+      "instructions": "Hold straight body position, engage core, breathe steadily.",
+      "equipment": "mat",
+      "muscleGroups": ["core", "abs"],
+      "duration": 60,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-jump-rope",
+      "name": "Jump Rope",
+      "instructions": "Light on feet, steady rhythm, keep elbows close to body.",
+      "equipment": "jump_rope",
+      "muscleGroups": ["cardio", "calves"],
+      "duration": 180,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-burpees",
+      "name": "Burpees",
+      "instructions": "Full body movement: squat, jump back, push-up, jump forward, jump up.",
+      "equipment": "none",
+      "muscleGroups": ["full_body", "cardio"],
+      "duration": 120,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-mountain-climbers",
+      "name": "Mountain Climbers",
+      "instructions": "In plank position, alternate bringing knees to chest rapidly.",
+      "equipment": "none",
+      "muscleGroups": ["core", "cardio"],
+      "duration": 90,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-arm-circles",
+      "name": "Arm Circles",
+      "instructions": "Large circular motions with arms to warm up shoulders.",
+      "equipment": "none",
+      "muscleGroups": ["shoulders"],
+      "duration": 60,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-leg-swings",
+      "name": "Dynamic Leg Swings",
+      "instructions": "Swing legs forward and back to warm up hips.",
+      "equipment": "none",
+      "muscleGroups": ["legs"],
+      "duration": 120,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-chest-stretch",
+      "name": "Chest Stretch",
+      "instructions": "Gently stretch chest muscles against a wall.",
+      "equipment": "none",
+      "muscleGroups": [],
+      "duration": 45,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-hamstring-stretch",
+      "name": "Hamstring Stretch",
+      "instructions": "Seated forward fold to stretch hamstrings.",
+      "equipment": "mat",
+      "muscleGroups": [],
+      "duration": 45,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  },
+  {
+    "type": "time_based",
+    "data": {
+      "id": "exercise-childs-pose",
+      "name": "Child's Pose",
+      "instructions": "Kneel back onto heels, stretch arms forward.",
+      "equipment": "mat",
+      "muscleGroups": [],
+      "duration": 90,
+      "actualDuration": null,
+      "isCompleted": false,
+      "completionStatus": "incomplete",
+      "notes": null
+    }
+  }
+]

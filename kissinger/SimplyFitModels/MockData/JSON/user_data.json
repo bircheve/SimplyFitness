@@ -1,0 +1,23 @@
+{
+  "id": "story-user-123-456-789",
+  "userId": "user-123-456-789",
+  "entity": "story",
+  "prompt": "I'm a 28-year-old software developer looking to build muscle and improve my overall fitness. I have dumbbells and a pull-up bar at home. I want to work out 4 times per week for about 45 minutes each session. My goal is to gain lean muscle mass and improve my strength. I have a minor shoulder injury from years ago that sometimes flares up, so I need to be careful with overhead movements.",
+  "fitnessLevel": "intermediate",
+  "primaryGoals": ["muscle_gain", "strength", "general_fitness"],
+  "availableEquipment": ["dumbbells", "pullup_bar", "mat"],
+  "workoutFrequency": "4_times_per_week",
+  "preferredWorkoutDuration": "45_minutes",
+  "fitnessExperience": "1_to_2_years",
+  "injuries": ["Minor shoulder impingement - avoid heavy overhead pressing"],
+  "preferences": {
+    "preferredMuscleGroups": ["chest", "back", "shoulders"],
+    "avoidedMuscleGroups": [],
+    "preferredWorkoutTypes": ["strength", "hiit"],
+    "workoutIntensity": "moderate",
+    "restDayPreference": "active_recovery",
+    "musicPreference": "Rock/Electronic"
+  },
+  "createdAt": "2024-08-17T10:00:00Z",
+  "updatedAt": "2024-09-15T14:30:00Z"
+}
