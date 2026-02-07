@@ -80,10 +80,18 @@ SimplyFitness/
 ## App Preview
 
 <p align="center">
-  <img src="docs/images/SimplyFit-AppIcon-1024.png" alt="SimplyFit App Icon" width="200">
+  <img src="simplyfit/simplyFit/completeSet.gif" alt="Complete a Set" width="220">
+  &nbsp;&nbsp;
+  <img src="simplyfit/simplyFit/remixWorkout.gif" alt="Remix Workout" width="220">
+  &nbsp;&nbsp;
+  <img src="simplyfit/simplyFit/workoutFeedback.gif" alt="Workout Feedback" width="220">
+  &nbsp;&nbsp;
+  <img src="simplyfit/simplyFit/chatWithUs.gif" alt="Chat With Us" width="220">
 </p>
 
-*Additional screenshots coming soon*
+<p align="center">
+  <em>Complete sets with guided timers &bull; Remix workouts to your liking &bull; Rate your experience &bull; Get in-app support</em>
+</p>
 
 ## Getting Started
 
