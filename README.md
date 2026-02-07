@@ -80,13 +80,13 @@ SimplyFitness/
 ## App Preview
 
 <p align="center">
-  <img src="simplyfit/simplyFit/completeSet.gif" alt="Complete a Set" width="220">
+  <img src="docs/images/completeSet.gif" alt="Complete a Set" width="220">
   &nbsp;&nbsp;
-  <img src="simplyfit/simplyFit/remixWorkout.gif" alt="Remix Workout" width="220">
+  <img src="docs/images/remixWorkout.gif" alt="Remix Workout" width="220">
   &nbsp;&nbsp;
-  <img src="simplyfit/simplyFit/workoutFeedback.gif" alt="Workout Feedback" width="220">
+  <img src="docs/images/workoutFeedback.gif" alt="Workout Feedback" width="220">
   &nbsp;&nbsp;
-  <img src="simplyfit/simplyFit/chatWithUs.gif" alt="Chat With Us" width="220">
+  <img src="docs/images/chatWithUs.gif" alt="Chat With Us" width="220">
 </p>
 
 <p align="center">
